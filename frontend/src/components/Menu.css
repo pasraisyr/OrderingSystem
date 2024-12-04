@@ -1,0 +1,25 @@
+.menu {
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .menu h2 {
+    margin-bottom: 20px;
+  }
+  
+  .menu ul {
+    list-style-type: none;
+    padding: 0;
+  }
+  
+  .menu li {
+    display: flex;
+    justify-content: space-between;
+    margin: 10px 0;
+    padding: 10px;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .menu span {
+    font-size: 18px;
+  }
