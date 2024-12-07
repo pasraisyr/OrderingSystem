@@ -1,4 +1,4 @@
-package com.example.Project.Order;
+package com.example.Project.Menu;
 
 import java.util.List;
 
@@ -13,35 +13,35 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping("/orders")
-public class OrderController {
+@RequestMapping("/menuItems")
+public class MenuController {
 
     @Autowired
-    private OrderRepository orderRepository;
+    private MenuRepository menuRepository;
 
     @GetMapping
-    public List<Order> getAllOrders() {
-        return orderRepository.findAll();
+    public List<Menu> getAllMenuItems() {
+        return menuRepository.findAll();
     }
 
     @GetMapping("/{id}")
-    public Order getOrderById(@PathVariable String id) {
-        return orderRepository.findById(id).orElse(null);
+    public Menu getMenuItemById(@PathVariable String id) {
+        return menuRepository.findById(id).orElse(null);
     }
 
     @PostMapping
-    public Order createOrder(@RequestBody Order order) {
-        return orderRepository.save(order);
+    public Menu createMenuItem(@RequestBody Menu menu) {
+        return menuRepository.save(menu);
     }
 
     @PutMapping("/{id}")
-    public Order updateOrder(@PathVariable String id, @RequestBody Order order) {
-        order.setId(id);
-        return orderRepository.save(order);
+    public Menu updateMenuItem(@PathVariable String id, @RequestBody Menu menu) {
+        menu.setId(id);
+        return menuRepository.save(menu);
     }
 
     @DeleteMapping("/{id}")
-    public void deleteOrder(@PathVariable String id) {
-        orderRepository.deleteById(id);
+    public void deleteMenuItem(@PathVariable String id) {
+        menuRepository.deleteById(id);
     }
 }
