@@ -17,9 +17,12 @@ const CustomerMenu = () => {
       <div className="customer-menu-list">
         {menuItems.map(item => (
           <div key={item.id} className="customer-menu-item">
+
             <h2>{item.name}</h2>
+            {item.imageUrl && <img src={item.imageUrl} alt={item.name} className="menu-image" />}
             <p>{item.description}</p>
             <p>${item.price.toFixed(2)}</p>
+            
           </div>
         ))}
       </div>

@@ -16,6 +16,10 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/orders")
 public class OrderController {
 
+
+    @Autowired
+    private OrderService orderService;
+
     @Autowired
     private OrderRepository orderRepository;
 
@@ -29,9 +33,14 @@ public class OrderController {
         return orderRepository.findById(id).orElse(null);
     }
 
+    // @PostMapping
+    // public Order createOrder(@RequestBody Order order) {
+    //     return orderRepository.save(order);
+    // }
+
     @PostMapping
     public Order createOrder(@RequestBody Order order) {
-        return orderRepository.save(order);
+        return orderService.saveOrder(order); // Delegate to the service for order number generation
     }
 
     @PutMapping("/{id}")
