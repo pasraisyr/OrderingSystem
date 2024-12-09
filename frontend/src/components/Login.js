@@ -1,11 +1,13 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom'; // Import useNavigate
 import './Auth.css';
 
 const Login = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [message, setMessage] = useState('');
+  const navigate = useNavigate(); // Initialize navigate
 
   const handleLogin = async (event) => {
     event.preventDefault();
@@ -15,7 +17,17 @@ const Login = () => {
         password,
       });
       setMessage('Login successful!');
-      // Handle successful login (e.g., store token, redirect to another page)
+      const { token } = response.data;
+      // Store the token (e.g., in localStorage)
+      localStorage.setItem('token', token);
+      // Redirect based on role
+      if (username === 'Admin') {
+        navigate('/AdminMenu');
+      } else if (username === 'Staff1') {
+        navigate('/StaffDashboard');
+      } else {
+        navigate('/');
+      }
     } catch (error) {
       setMessage('Error logging in. Please try again.');
     }
@@ -42,6 +54,7 @@ const Login = () => {
         <button type="submit">Login</button>
       </form>
       {message && <p>{message}</p>}
+      <p>Don't have an account? <span className="signup-link" onClick={() => navigate('/signup')} style={{ textDecoration: 'underline', cursor: 'pointer' }}>Sign up here</span></p>
     </div>
   );
 };
