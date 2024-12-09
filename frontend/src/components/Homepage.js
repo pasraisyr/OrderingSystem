@@ -10,7 +10,7 @@ const Homepage = () => {
       </header>
       <nav>
         <ul>
-          <li><a href="/menu">Menu</a></li>
+          <li><a href="/CustomerMenu">Menu</a></li>
           <li><a href="/order">Order Now</a></li>
           <li><a href="/contact">Contact Us</a></li>
         </ul>

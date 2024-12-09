@@ -1,0 +1,45 @@
+.admin-menu-container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
+  
+  .admin-menu-form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .admin-menu-form input {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+  }
+  
+  .admin-menu-form button {
+    padding: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .admin-menu-form button:hover {
+    background-color: #218838;
+  }
+  
+  .admin-menu-list {
+    margin-top: 20px;
+  }
+  
+  .admin-menu-item {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    margin-bottom: 10px;
+  }
