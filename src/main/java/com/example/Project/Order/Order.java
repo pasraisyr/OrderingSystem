@@ -1,9 +1,8 @@
 package com.example.Project.Order;
-import java.util.List;
 
+import java.util.List;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
-
 import com.example.Project.Menu.Menu;
 
 @Document(collection = "orders")
@@ -13,14 +12,19 @@ public class Order {
     private String customerName;
     private List<Menu> menuItems;
     private double totalPrice;
+    private String orderType; 
+    private String orderNumber;
 
     // Constructors
     public Order() {}
 
-    public Order(String customerName, List<Menu> menuItems) {
+    public Order(String customerName, List<Menu> menuItems, String orderType, String orderNumber) {
         this.customerName = customerName;
+        this.orderNumber = orderNumber;
         this.menuItems = menuItems;
         this.totalPrice = calculateTotalPrice();
+        this.orderType = orderType;
+        
     }
 
     // Getters and Setters
@@ -51,6 +55,22 @@ public class Order {
 
     public double getTotalPrice() {
         return totalPrice;
+    }
+
+    public String getOrderType() { 
+        return orderType;
+    }
+
+    public void setOrderType(String orderType) { 
+        this.orderType = orderType;
+    }
+
+    public String getOrderNumber() {
+        return orderNumber;
+    }
+
+    public void setOrderNumber(String orderNumber) {
+        this.orderNumber = orderNumber;
     }
 
     // Method to calculate total price

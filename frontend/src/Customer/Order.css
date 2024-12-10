@@ -1,98 +1,157 @@
 .order-container {
-    max-width: 800px;
-    margin: 0 auto;
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-  
-  .order-header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .order-form {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-  }
-  
-  .order-form input {
-    padding: 10px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-  }
-  
-  .menu-list {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    margin-top: 20px;
-  }
-  
-  .menu-card {
-    flex: 1 1 calc(33.333% - 20px);
-    padding: 20px;
-    border: 1px solid #ccc;
-    border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    text-align: center;
-  }
-  
-  .menu-card h2 {
-    margin: 0 0 10px;
-  }
-  
-  .menu-card p {
-    margin: 5px 0;
-  }
-  
-  .menu-card button {
-    padding: 10px;
-    background-color: #007bff;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .menu-card button:hover {
-    background-color: #0056b3;
-  }
-  
-  .order-summary {
-    margin-top: 20px;
-  }
-  
-  .order-summary h2 {
-    margin-bottom: 10px;
-  }
-  
-  .order-summary ul {
-    list-style-type: none;
-    padding: 0;
-  }
-  
-  .order-summary li {
-    margin-bottom: 5px;
-  }
-  
-  .order-summary p {
-    font-weight: bold;
-  }
-  
-  .order-form button[type="submit"] {
-    padding: 10px;
-    background-color: #28a745;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
-    transition: background-color 0.3s;
-  }
-  
-  .order-form button[type="submit"]:hover {
-    background-color: #218838;
-  }
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+}
+
+.order-header {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.order-form {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.order-form input {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.menu-list {
+  display: flex;
+  flex-direction: column; /* Ensure menu items are stacked vertically */
+  gap: 20px;
+  margin-top: 20px;
+}
+
+.menu-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.menu-card h2 {
+  margin: 0 0 10px;
+}
+
+.menu-card p {
+  margin: 5px 0;
+}
+
+.menu-card button {
+  padding: 10px;
+  background-color: #007bff;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+.menu-card button:hover {
+  background-color: #0056b3;
+}
+
+.order-summary {
+  position: fixed; /* Fix the position of the order summary */
+  bottom: 20px;    /* Position it at the bottom of the viewport */
+  right: 20px;     /* Align it to the right side of the viewport */
+  width: 250px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+  z-index: 1000;
+}
+
+.order-summary h2 {
+  margin-bottom: 10px;
+}
+
+.order-summary ul {
+  list-style-type: none;
+  padding: 0;
+}
+
+.order-summary li {
+  margin-bottom: 5px;
+}
+
+.order-summary p {
+  font-weight: bold;
+}
+
+.order-form button[type="submit"] {
+  padding: 10px;
+  background-color: #28a745;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s;
+  align-self: center; /* Center the button within the form */
+}
+
+.order-form button[type="submit"]:hover {
+  background-color: #218838;
+}
+
+.order-type-container {
+  text-align: right; /* Align the content to the right */
+  margin-right: 20px; /* Add spacing from the right edge */
+  margin-bottom: 20px; /* Add spacing below the dropdown */
+}
+
+.order-type-container label {
+  font-weight: bold;
+  margin-right: 10px; /* Add space between the label and dropdown */
+}
+
+.order-type-container select {
+  padding: 5px;
+  font-size: 1rem;
+}
+
+.order-details-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* Center the box horizontally */
+  justify-content: center; /* Center the box vertically */
+  min-height: 100vh; /* Full viewport height */
+  background-color: #f9f9f9; /* Light background for contrast */
+}
+
+.order-details-box {
+  width: 60%; /* Adjust width as needed */
+  max-width: 600px;
+  padding: 20px;
+  border: 1px solid #ccc; /* Add a border to the box */
+  border-radius: 10px; /* Rounded corners */
+  background-color: white; /* Box background */
+  text-align: left; /* Align text to the left */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+}
+
+.order-details-box h1 {
+  text-align: center; /* Center the title inside the box */
+  margin-bottom: 20px; /* Space below the title */
+}
+
+.order-details-box p,
+.order-details-box ul {
+  margin: 10px 0; /* Space between paragraphs and lists */
+}
