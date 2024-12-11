@@ -13,7 +13,8 @@
     gap: 10px;
   }
   
-  .admin-menu-form input {
+  .admin-menu-form input
+  .admin-menu-form select {
     padding: 10px;
     border: 1px solid #ccc;
     border-radius: 4px;
@@ -41,13 +42,14 @@
   
   .admin-menu-table th,
   .admin-menu-table td {
-    border: 1px solid #ccc;
+    border: 1px solid#ccc;
     padding: 8px;
     text-align: left;
   }
   
   .admin-menu-table th {
     background-color: #f9f9f9;
+    color: black;
   }
   
   .table-image {

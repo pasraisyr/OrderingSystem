@@ -11,16 +11,18 @@ public class Menu {
     private String description;
     private double price;
     private String imageUrl; 
+    private String category;
   
     // Constructors
     public Menu() {}
 
-    public Menu(String id, String name, String description, double price, String imageUrl) {
+    public Menu(String id, String name, String description, double price, String imageUrl, String category) {
         this.id = id;
         this.name = name;
         this.description = description;
         this.price = price;
         this.imageUrl = imageUrl;
+        this.category = category;
     }
 
     // Getters and Setters
@@ -62,5 +64,13 @@ public class Menu {
 
     public void setImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public void setCategory(String category) {
+        this.category = category;
     }
 }
