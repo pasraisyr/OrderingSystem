@@ -1,17 +1,21 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import './AdminDashboard.css';
 
 const AdminDashboard = () => {
   return (
-    <div>
-      <h1>Admin Dashboard</h1>
+    <div className="dashboard-container">
+      <h1 className="header">Admin Dashboard</h1>
       <nav>
-        <ul>
+        <ul className="nav-list">
           <li>
-            <Link to="/ViewOrder">View Order</Link>
+            <Link to="/ViewOrder" className="nav-link">View Order</Link>
           </li>
           <li>
-            <Link to="/Sales">Sales</Link>
+            <Link to="/Sales" className="nav-link">Sales</Link>
+          </li>
+          <li>
+            <Link to="/AdminMenu" className="nav-link">Add Menu</Link>
           </li>
         </ul>
       </nav>

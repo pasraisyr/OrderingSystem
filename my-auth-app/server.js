@@ -17,14 +17,14 @@ mongoose.connect('mongodb://Admin:abc123@localhost:27017/my-auth-app', {
 });
 
 app.post('/api/register', async (req, res) => {
-  const { username, email, password } = req.body;
+  const { username, email, password, role } = req.body; // Include role in the request body
   const hashedPassword = await bcrypt.hash(password, 10);
   try {
-    const user = new User({ username, email, password: hashedPassword });
+    const user = new User({ username, email, password: hashedPassword, role });
     await user.save();
     res.status(201).send('User registered successfully');
   } catch (error) {
-    console.error('Error registering user:', error); // Log the error for debugging
+    console.error('Error registering user:', error);
     if (error.code === 11000) {
       res.status(400).send('Username or email already exists');
     } else {
@@ -43,12 +43,8 @@ app.post('/api/login', async (req, res) => {
   if (!isPasswordValid) {
     return res.status(400).send('Invalid password');
   }
-  const token = jwt.sign({ userId: user._id }, 'your_jwt_secret');
-  res.send({ token });
-});
-
-app.get('/api/protected', authMiddleware, (req, res) => {
-  res.send('This is a protected route');
+  const token = jwt.sign({ userId: user._id, role: user.role }, 'your_jwt_secret');
+  res.send({ token, role: user.role }); // Include role in the response
 });
 
 app.get('/api/user/profile', authMiddleware, async (req, res) => {
