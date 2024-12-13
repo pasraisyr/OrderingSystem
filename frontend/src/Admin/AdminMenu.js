@@ -3,9 +3,9 @@ import './AdminMenu.css';
 
 const AdminMenu = () => {
   const [menuItems, setMenuItems] = useState([]);
-  const [newMenuItem, setNewMenuItem] = useState({ name: '', description: '', price: '', imageUrl: '' });
+  const [newMenuItem, setNewMenuItem] = useState({ name: '', description: '', price: '', imageUrl: '', category: '' });
   const [editingId, setEditingId] = useState(null);
-  const fileInputRef = useRef(null); // Add a ref for the file input field
+  const fileInputRef = useRef(null);
 
   useEffect(() => {
     fetch('http://localhost:8083/menuItems')
@@ -23,7 +23,7 @@ const AdminMenu = () => {
       .then((response) => response.json())
       .then((data) => {
         setMenuItems([...menuItems, data]);
-        setNewMenuItem({ name: '', description: '', price: '', imageUrl: '' });
+        setNewMenuItem({ name: '', description: '', price: '', imageUrl: '', category: '' });
         if (fileInputRef.current) {
           fileInputRef.current.value = ''; // Clear the file input field
         }
@@ -33,7 +33,7 @@ const AdminMenu = () => {
 
   const handleEdit = (item) => {
     setEditingId(item.id);
-    setNewMenuItem({ name: item.name, description: item.description, price: item.price, imageUrl: item.imageUrl });
+    setNewMenuItem({ name: item.name, description: item.description, price: item.price, imageUrl: item.imageUrl, category: item.category });
   };
 
   const handleSaveEdit = () => {
@@ -47,7 +47,7 @@ const AdminMenu = () => {
         const updatedMenuItems = menuItems.map((item) => (item.id === editingId ? data : item));
         setMenuItems(updatedMenuItems);
         setEditingId(null);
-        setNewMenuItem({ name: '', description: '', price: '', imageUrl: '' });
+        setNewMenuItem({ name: '', description: '', price: '', imageUrl: '', category: '' });
         if (fileInputRef.current) {
           fileInputRef.current.value = ''; // Clear the file input field
         }
@@ -80,6 +80,14 @@ const AdminMenu = () => {
     <div className="admin-menu-container">
       <h1>Admin Menu</h1>
       <div className="admin-menu-form">
+        <select
+          value={newMenuItem.category}
+          onChange={(e) => setNewMenuItem({ ...newMenuItem, category: e.target.value })}
+        >
+          <option value="" disabled> Choose Category</option>
+          <option value="toast">Toast</option>
+          <option value="coffee">Coffee</option>
+        </select>
         <input
           type="text"
           placeholder="Name"
@@ -115,6 +123,7 @@ const AdminMenu = () => {
       <table className="admin-menu-table">
         <thead>
           <tr>
+          <th>Category</th>
             <th>Name</th>
             <th>Description</th>
             <th>Price</th>
@@ -125,6 +134,7 @@ const AdminMenu = () => {
         <tbody>
           {menuItems.map((item) => (
             <tr key={item.id}>
+              <td>{item.category}</td>
               <td>{item.name}</td>
               <td>{item.description}</td>
               <td>${item.price}</td>
